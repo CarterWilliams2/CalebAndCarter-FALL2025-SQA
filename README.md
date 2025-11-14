@@ -1,2 +1,3 @@
 # CalebAndCarter-FALL2025-SQA
-SQA course project
+Team Name: CalebAndCarter
+Team Members: Caleb Flowers and Carter Williams
