@@ -1,8 +1,8 @@
-#SQA Project Report
+# SQA Project Report
 
-##Fuzzing
+## Fuzzing
 
-##Forensics
+## Forensics
 
-##Continuous Integration
+## Continuous Integration
 
