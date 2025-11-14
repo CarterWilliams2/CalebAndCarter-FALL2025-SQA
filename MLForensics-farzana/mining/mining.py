@@ -21,6 +21,7 @@ def deleteRepo(dirName, type_):
     try:
         if os.path.exists(dirName):
             shutil.rmtree(dirName)
+          #log-structure change-repo deleted
     except OSError:
         print('Failed deleting, will try manually')  
         
@@ -40,7 +41,8 @@ def makeChunks(the_list, size_):
 def cloneRepo(repo_name, target_dir):
     cmd_ = "git clone " + repo_name + " " + target_dir 
     try:
-       subprocess.check_output(['bash','-c', cmd_])    
+       subprocess.check_output(['bash','-c', cmd_]) 
+      #log-structure change-repo cloned
     except subprocess.CalledProcessError:
        print('Skipping this repo ... trouble cloning repo:', repo_name )
 
@@ -91,6 +93,7 @@ def getDevEmailForCommit(repo_path_param, hash_):
         # print(author_emails) 
         author_emails = list(np.unique(author_emails) )
     except IndexError as e_:
+        #log-failed to split author emails
         pass
     return author_emails  
     
