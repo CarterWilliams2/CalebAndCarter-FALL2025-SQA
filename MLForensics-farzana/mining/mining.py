@@ -93,6 +93,7 @@ def getDevEmailForCommit(repo_path_param, hash_):
         # print(author_emails) 
         author_emails = list(np.unique(author_emails) )
     except IndexError as e_:
+        #log-failed to split author emails
         pass
     return author_emails  
     
