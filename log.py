@@ -101,4 +101,6 @@ def reportDensity( res_file ):
 
 
 if __name__=='__main__':
-    print('logging')
+    print('logging...')
+    deleteRepo('repo_to_delete','example')
+    
