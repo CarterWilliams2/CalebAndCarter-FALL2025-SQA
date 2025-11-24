@@ -17,7 +17,8 @@ def deleteRepo(dirName, type_):
     try:
         if os.path.exists(dirName):
             shutil.rmtree(dirName)
-          #log-structure change-repo deleted
+            #log-structure change-repo deleted
+            print(f"repo {dirName} successfully deleted")
     except OSError:
         print('Failed deleting, will try manually')
 
@@ -26,10 +27,11 @@ def deleteRepo(dirName, type_):
 def cloneRepo(repo_name, target_dir):
     cmd_ = "git clone " + repo_name + " " + target_dir 
     try:
-       subprocess.check_output(['bash','-c', cmd_]) 
-      #log-structure change-repo cloned
+        subprocess.check_output(['bash','-c', cmd_]) 
+        #log-structure change-repo cloned
+        print(f"repo {repo_name} successfully cloned")
     except subprocess.CalledProcessError:
-       print('Skipping this repo ... trouble cloning repo:', repo_name)
+        print('Skipping this repo ... trouble cloning repo:', repo_name)
 
 #getDevEmailForCommit mining.py
 def getDevEmailForCommit(repo_path_param, hash_):
@@ -53,6 +55,7 @@ def getDevEmailForCommit(repo_path_param, hash_):
         author_emails = list(np.unique(author_emails) )
     except IndexError as e_:
         #log-failed to split author emails
+        print("Failed to split author emails")
         pass
     return author_emails  
 
@@ -60,6 +63,7 @@ def getDevEmailForCommit(repo_path_param, hash_):
 def reportProp( res_file ):
     res_df = pd.read_csv(res_file) 
     # log-external security risk reading from an external file
+    print(f'security risk, reading from external file: {res_file}')
     fields2explore = ['DATA_LOAD_COUNT', 'MODEL_LOAD_COUNT', 'DATA_DOWNLOAD_COUNT',	'MODEL_LABEL_COUNT', 'MODEL_OUTPUT_COUNT',	
                       'DATA_PIPELINE_COUNT', 'ENVIRONMENT_COUNT', 'STATE_OBSERVE_COUNT',  'TOTAL_EVENT_COUNT'
                      ]
@@ -79,6 +83,7 @@ def reportProp( res_file ):
 def reportDensity( res_file ):
     res_df = pd.read_csv(res_file) 
     # log-external security risk reading from an external file
+    print(f'security risk, reading from external file: {res_file}')
     fields2explore = ['DATA_LOAD_COUNT', 'MODEL_LOAD_COUNT', 'DATA_DOWNLOAD_COUNT',	'MODEL_LABEL_COUNT', 'MODEL_OUTPUT_COUNT',	
                       'DATA_PIPELINE_COUNT', 'ENVIRONMENT_COUNT', 'STATE_OBSERVE_COUNT',  'TOTAL_EVENT_COUNT'
                      ]
