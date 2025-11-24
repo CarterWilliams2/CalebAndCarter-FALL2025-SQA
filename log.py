@@ -19,9 +19,9 @@ def deleteRepo(dirName, type_):
         if os.path.exists(dirName):
             shutil.rmtree(dirName)
             #log-structure change-repo deleted
-            print(f"repo {dirName} successfully deleted")
+            print(f"LOG 1: repo {dirName} successfully deleted")
     except OSError:
-        print('Failed deleting, will try manually')
+        print('LOG 1: Failed deleting, will try manually')
 
 
 #cloneRepo mining.py
@@ -30,7 +30,7 @@ def cloneRepo(repo_name, target_dir):
     try:
         subprocess.check_output(['bash','-c', cmd_]) 
         #log-structure change-repo cloned
-        print(f"repo {repo_name} successfully cloned")
+        print(f"LOG 2: repo {repo_name} successfully cloned")
     except subprocess.CalledProcessError:
         print('Skipping this repo ... trouble cloning repo:', repo_name)
 
@@ -44,7 +44,8 @@ def getDevEmailForCommit(repo_path_param, hash_):
 
     author_emails = str(subprocess.check_output(['bash','-c', command2Run]))
     author_emails = author_emails.split('\n')
-    # print(type(author_emails)) 
+    #print(type(author_emails)) 
+    #print(author_emails)
     author_emails = [x_.replace(hash_, '') for x_ in author_emails if x_ != '\n' and '@' in x_ ] 
     author_emails = [x_.replace('^', '') for x_ in author_emails if x_ != '\n' and '@' in x_ ] 
     author_emails = [x_.replace('!', '') for x_ in author_emails if x_ != '\n' and '@' in x_ ] 
@@ -54,6 +55,8 @@ def getDevEmailForCommit(repo_path_param, hash_):
         author_emails = [x_ for x_ in author_emails if len(x_) > 3 ] 
         # print(author_emails) 
         author_emails = list(np.unique(author_emails) )
+        #log-succesfull splitting
+        print('LOG 3: emails split successfully')
     except IndexError as e_:
         #log-failed to split author emails
         print("Failed to split author emails")
@@ -64,7 +67,7 @@ def getDevEmailForCommit(repo_path_param, hash_):
 def reportProp( res_file ):
     res_df = pd.read_csv(res_file) 
     # log-external security risk reading from an external file
-    print(f'security risk, reading from external file: {res_file}')
+    print(f'LOG 4: security risk, reading from external file: {res_file}')
     fields2explore = ['DATA_LOAD_COUNT', 'MODEL_LOAD_COUNT', 'DATA_DOWNLOAD_COUNT',	'MODEL_LABEL_COUNT', 'MODEL_OUTPUT_COUNT',	
                       'DATA_PIPELINE_COUNT', 'ENVIRONMENT_COUNT', 'STATE_OBSERVE_COUNT',  'TOTAL_EVENT_COUNT'
                      ]
@@ -84,7 +87,7 @@ def reportProp( res_file ):
 def reportDensity( res_file ):
     res_df = pd.read_csv(res_file) 
     # log-external security risk reading from an external file
-    print(f'security risk, reading from external file: {res_file}')
+    print(f'LOG 5: security risk, reading from external file: {res_file}')
     fields2explore = ['DATA_LOAD_COUNT', 'MODEL_LOAD_COUNT', 'DATA_DOWNLOAD_COUNT',	'MODEL_LABEL_COUNT', 'MODEL_OUTPUT_COUNT',	
                       'DATA_PIPELINE_COUNT', 'ENVIRONMENT_COUNT', 'STATE_OBSERVE_COUNT',  'TOTAL_EVENT_COUNT'
                      ]
@@ -104,4 +107,7 @@ def reportDensity( res_file ):
 if __name__=='__main__':
     print('logging...')
     deleteRepo('repo_to_delete','example')
-    cloneRepo('https://github.com/paser-group/continuous-secsoft.git', 'repo-clone')
+    cloneRepo('git@github.com:CarterWilliams2/git_test.git', 'repo-clone')
+    getDevEmailForCommit('fake-repo', '')
+    reportProp('file.csv')
+    reportDensity('file.csv')
