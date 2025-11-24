@@ -3,6 +3,7 @@ import shutil
 import subprocess
 import statistics
 import pandas as pd
+import numpy as np
 
 def Average(Mylist): 
     return sum(Mylist) / len(Mylist)
@@ -103,4 +104,4 @@ def reportDensity( res_file ):
 if __name__=='__main__':
     print('logging...')
     deleteRepo('repo_to_delete','example')
-    
+    cloneRepo('https://github.com/paser-group/continuous-secsoft.git', 'repo-clone')
