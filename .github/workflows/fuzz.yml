@@ -1,18 +1,24 @@
-
 name: fuzz
 
-# Controls when the workflow will run
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  run-python-script:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: doFuzz
-        run: python3 fuzz.py
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.10'
+      
+      - name: Run Fuzzer
+        run: python fuzz.py
+
+#Reference:https://www.geeksforgeeks.org/devops/run-python-script-in-github-actions/        
