@@ -64,7 +64,7 @@ def fuzzMed():
 
 def fuzzFileLength():
     print("\nFuzzing getFileLength()--------------------------------------------------------")
-    args = [["Case1-File in pwd", 'task1.1.md', 95], ["Case2-Valid File Path", 'MLForensics-farzana/empirical/report.py', 106], ["Case3-Invalid File Path", 'bad/path/unknown.py', "invalid path"], ["Case4-Empty Path", [], "invalid path"], ["Case5-Number Path", 5, "invalid path"]]
+    args = [["Case1-File in pwd", '5', 95], ["Case2-Valid File Path", 'MLForensics-farzana/empirical/report.py', 106], ["Case3-Invalid File Path", 'bad/path/unknown.py', "invalid path"], ["Case4-Empty Path", [], "invalid path"], ["Case5-Number Path", 5, "invalid path"]]
     for arr in args:
         try:
             temp=getFileLength(arr[1])
