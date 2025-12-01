@@ -26,5 +26,7 @@ In summary, adding these logging statements revealed that it is beneficial to ha
 
 
 ## Continuous Integration
+For continuous integration, we implement Codacy as we did in an earlier workshop. We set it up to run on every push.
 <img width="1262" height="408" alt="image" src="https://github.com/user-attachments/assets/22d0785a-240d-42c7-b163-97d9e477828e" />
 
+We found that continuous integration is a very helpful tool that ensures our code is still clean and working after we make changes to the code. 
