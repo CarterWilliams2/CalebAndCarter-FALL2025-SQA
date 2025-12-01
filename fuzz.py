@@ -2,15 +2,11 @@ import statistics
 from datetime import date
 import os
 import unittest
+
+from mining import getPythonFileCount
 #methods to fuzz -----------------------
 # from mining.py
-def getPythonFileCount(path2dir):
-    valid_list = []
-    for _, _, filenames in os.walk(path2dir):
-        for file_ in filenames:
-            if ((file_.endswith('py')) or (file_.endswith('ipynb'))):
-                valid_list.append(file106)
-    return len(valid_list)
+
 
 # from report.py
 
