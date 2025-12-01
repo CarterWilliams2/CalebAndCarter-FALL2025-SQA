@@ -3,7 +3,7 @@ from datetime import date
 import os
 import unittest
 import sys
-sys.path.insert(0, "MLForensics-farzana")
+sys.path.insert(0, "/MLForensics-farzana")
 from mining import getPythonFileCount
 #methods to fuzz -----------------------
 # from mining.py
