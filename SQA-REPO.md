@@ -14,7 +14,15 @@ The main issue with days between is it requires a date data format and does not 
 In summary, this simple fuzzing revealed that all methods (especially those in python) need to include inputs type verification and/or execption handling to account for corner cases that arise. Pythons dynamic typing of variables prevents guaranteeing that any method where a variable is a parameter from passing in a certain data type so type checks must be handled by the method itself versus the programmer. 
 
 ## Forensics
+For forensics, we were tasked with adding logging statements to 5 different methods within the repo. The methods we chose and where they came from can be found in log.py. We came up with inputs for these methods to trigger the logging statements. An example screenshot is below.
+
 <img width="1153" height="898" alt="image" src="https://github.com/user-attachments/assets/cebd39d2-4453-4260-8464-00492b36983f" />
+
+We found that a number of methods had logging statements for when something failed, but not when they succeeded. A lack of logging statements for successes could lead to human errors going unnoticed. For example, if we were to pass in the wrong repo into the deleteRepo method, we would have no confirmation that we deleted the unintended repo. A similar problem could be ran into with the cloneRepo method. Similarly, there was a failing log for getDevEmailForCommit, but not a successful one. We found it very hard to try and trigger the failing log statement, it may be that it is impossible to reach it. As for the methods reading from external csv files, there were no logs to confirm that we were reading into the intended file. This could cause issues for data collection and manipulation if not noticed.
+
+In summary, adding these logging statements revealed that it is beneficial to have logging statements for both successful and unsucessful outcomes to aid with debugging and verifying reliability.
+
+
 
 
 ## Continuous Integration
