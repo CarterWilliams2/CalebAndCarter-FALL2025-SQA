@@ -2,12 +2,42 @@ import statistics
 from datetime import date
 import os
 import unittest
-import sys
-sys.path.insert(0, "/MLForensics-farzana")
-from mining import getPythonFileCount
+
+
 #methods to fuzz -----------------------
 # from mining.py
+def getPythonFileCount(path2dir):
+    valid_list = []
+    for _, _, filenames in os.walk(path2dir):
+        for file_ in filenames:
+            if ((file_.endswith('py')) or (file_.endswith('ipynb'))):
+                valid_list.append(file106)
+    return len(valid_list)
 
+# from report.py
+
+def Average(Mylist):
+    return sum(Mylist) / len(Mylist)
+
+def Median(Mylist):
+    return statistics.median(Mylist)
+
+# from dataset.stats.py
+
+def getFileLength(file_):
+    return sum(1 for line in open(file_, encoding='latin-1'))
+
+def days_between(d1_, d2_): ## pass in date time objects
+    return abs((d2_ - d1_).days)
+
+# from mining.py
+def getPythonFileCount(path2dir):
+    valid_list = []
+    for _, _, filenames in os.walk(path2dir):
+        for file_ in filenames:
+            if ((file_.endswith('py')) or (file_.endswith('ipynb'))):
+                valid_list.append(file_)
+    return len(valid_list)
 
 # from report.py
 
